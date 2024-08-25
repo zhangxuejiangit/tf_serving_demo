@@ -1,0 +1,8 @@
+alias dostop='sudo docker stop '
+alias dorm='sudo docker rm -f '
+alias dops='sudo docker ps -a'
+alias doexec='sudo docker exec -it '
+alias dogo='sudo sh /tf_serving/exec/go.sh'
+alias vb='sudo vim ~/.bash_profile'
+alias sb='source ~/.bash_profile'
+alias fire='sudo sh /tf_serving/exec/fire.sh'
