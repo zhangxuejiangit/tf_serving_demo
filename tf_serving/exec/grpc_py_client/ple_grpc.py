@@ -1,5 +1,6 @@
 import time
 import grpc
+import tensorflow as tf
 
 from tensorflow_serving.apis import predict_pb2
 from tensorflow_serving.apis import prediction_service_pb2_grpc
@@ -81,14 +82,16 @@ input_data["uv_rate_1d"] = [0.0]
 
 data_grpc = []
 for f, v in input_data.items():
-    v = [[i] for i in v]
-    request.inputs[f].CopyFrom(tf.make_tensor_proto(v))
+    #v = [[i] for i in v]
+    request.inputs[f].CopyFrom(tf.make_tensor_proto([v]))
+    print(v)
+#print(request)
 data_grpc.append(request)
 # 测试 耗时
 start_ts = time.time()
 for _ in range(1000):
     result = stub.Predict(request, 10)
-    # print(result)
+   # print(result)
 print((time.time() - start_ts) / 1000)
 
 
